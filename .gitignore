@@ -1,0 +1,10 @@
+logs
+*.log
+pnpm-debug.log*
+node_modules
+dist
+.env
+input
+.vscode
+.idea
+.DS_Store
