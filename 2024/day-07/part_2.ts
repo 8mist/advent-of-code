@@ -7,8 +7,8 @@ const testInput = fs.readFileSync(
 export const testCase = [testInput, 11387];
 
 type Equation = {
-  target: number;
-  numbers: number[];
+	target: number;
+	numbers: number[];
 };
 
 const format = (input: string): Equation[] => {
@@ -25,29 +25,32 @@ const format = (input: string): Equation[] => {
 		});
 };
 
-const evaluateLeftToRight = (numbers: number[], operators: string[]): number => {
+const evaluateLeftToRight = (
+	numbers: number[],
+	operators: string[],
+): number => {
 	let result = numbers[0];
 	for (let i = 0; i < operators.length; i++) {
-    if (operators[i] === "+") {
-      result += numbers[i + 1];
-    } else if (operators[i] === "*") {
-      result *= numbers[i + 1];
-    } else if (operators[i] === "||") {
-      result = parseInt(result.toString() + numbers[i + 1].toString());
-    }
-  }
+		if (operators[i] === "+") {
+			result += numbers[i + 1];
+		} else if (operators[i] === "*") {
+			result *= numbers[i + 1];
+		} else if (operators[i] === "||") {
+			result = parseInt(result.toString() + numbers[i + 1].toString());
+		}
+	}
 	return result;
-}
+};
 
 const generateOperatorsCombinations = (n: number): string[][] => {
-  if (n === 0) return [[]];
-  const smallerCombos = generateOperatorsCombinations(n - 1);
-  return smallerCombos.flatMap((combo) => [
-    combo.concat("+"),
-    combo.concat("*"),
-    combo.concat("||"),
-  ]);
-}
+	if (n === 0) return [[]];
+	const smallerCombos = generateOperatorsCombinations(n - 1);
+	return smallerCombos.flatMap((combo) => [
+		combo.concat("+"),
+		combo.concat("*"),
+		combo.concat("||"),
+	]);
+};
 
 export const solve = (input: string) => {
 	const equations = format(input);

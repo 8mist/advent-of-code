@@ -7,8 +7,8 @@ const testInput = fs.readFileSync(
 export const testCase = [testInput, 3749];
 
 type Equation = {
-  target: number;
-  numbers: number[];
+	target: number;
+	numbers: number[];
 };
 
 const format = (input: string): Equation[] => {
@@ -25,7 +25,10 @@ const format = (input: string): Equation[] => {
 		});
 };
 
-const evaluateLeftToRight = (numbers: number[], operators: string[]): number => {
+const evaluateLeftToRight = (
+	numbers: number[],
+	operators: string[],
+): number => {
 	let result = numbers[0];
 	for (let i = 0; i < operators.length; i++) {
 		if (operators[i] === "+") {
@@ -35,7 +38,7 @@ const evaluateLeftToRight = (numbers: number[], operators: string[]): number => 
 		}
 	}
 	return result;
-}
+};
 
 const generateOperatorsCombinations = (n: number): string[][] => {
 	if (n === 0) return [[]];
@@ -44,7 +47,7 @@ const generateOperatorsCombinations = (n: number): string[][] => {
 		combo.concat("+"),
 		combo.concat("*"),
 	]);
-}
+};
 
 export const solve = (input: string) => {
 	const equations = format(input);
