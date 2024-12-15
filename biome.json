@@ -22,7 +22,10 @@
 			"recommended": true,
 			"style": {
 				"noNonNullAssertion": "off"
-			}
+			},
+      "suspicious": {
+        "noConfusingLabels": "off"
+      }
 		}
 	},
 	"javascript": {
